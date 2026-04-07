@@ -120,6 +120,139 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* What's Coming Next */}
+      <section className="relative z-10 mt-32 w-full max-w-2xl">
+        <style>{`
+          @keyframes nikah-fadein {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+          }
+          .nikah-timeline-item {
+            animation: nikah-fadein 0.5s ease both;
+          }
+          .nikah-timeline-item:nth-child(1) { animation-delay: 0.05s; }
+          .nikah-timeline-item:nth-child(2) { animation-delay: 0.15s; }
+          .nikah-timeline-item:nth-child(3) { animation-delay: 0.25s; }
+          .nikah-timeline-item:nth-child(4) { animation-delay: 0.35s; }
+          .nikah-timeline-item:nth-child(5) { animation-delay: 0.45s; }
+          .nikah-timeline-item:nth-child(6) { animation-delay: 0.55s; }
+          .nikah-timeline-item:nth-child(7) { animation-delay: 0.65s; }
+        `}</style>
+
+        <p
+          className="mb-2 text-xs font-semibold uppercase tracking-[0.3em]"
+          style={{ color: "#c8a96e" }}
+        >
+          Roadmap
+        </p>
+        <h2
+          className="text-2xl font-bold tracking-tight sm:text-3xl"
+          style={{ color: "#f0ece8" }}
+        >
+          What&apos;s Coming Next
+        </h2>
+        <p className="mt-2 text-sm" style={{ color: "#8a8698" }}>
+          We&apos;re just getting started.
+        </p>
+
+        {/* Timeline */}
+        <div className="relative mt-12 text-left">
+          {/* Vertical gold line */}
+          <div
+            className="absolute left-6 top-0 bottom-0 w-px"
+            style={{ backgroundColor: "#c8a96e", opacity: 0.25 }}
+            aria-hidden
+          />
+
+          <div className="flex flex-col gap-6">
+            {[
+              {
+                icon: "📱",
+                title: "Telegram Integration",
+                desc: "Chat with any Wakeel directly through Telegram — no app download needed. Share your agent as a simple Telegram bot link.",
+              },
+              {
+                icon: "💬",
+                title: "Import Chat History",
+                desc: "Connect your Telegram or WhatsApp history so your AI agent truly understands how you communicate — your tone, your humor, your personality.",
+              },
+              {
+                icon: "🎙️",
+                title: "Voice Conversations",
+                desc: "Talk to a Wakeel by voice instead of typing. The AI speaks back naturally, making it feel like a real conversation with a representative.",
+              },
+              {
+                icon: "📲",
+                title: "Standalone Mobile App",
+                desc: "A dedicated app with smart matching — no more endless scrolling through profiles. Your AI agent does the screening for you.",
+              },
+              {
+                icon: "🤝",
+                title: "AI-to-AI Matching",
+                desc: "Both sides create their Wakeel. The two AI agents have a conversation first, identify compatibility, and recommend whether to proceed.",
+              },
+              {
+                icon: "👨‍👩‍👧",
+                title: "Family Portal",
+                desc: "A separate view for parents and guardians to ask their own questions and review compatibility — because family matters.",
+              },
+              {
+                icon: "🌍",
+                title: "Built for Everyone",
+                desc: "Perfect for shy people, long-distance situations, busy professionals, or anyone who finds first conversations awkward. No more pressure — let your AI break the ice.",
+              },
+            ].map(({ icon, title, desc }) => (
+              <div key={title} className="nikah-timeline-item relative flex gap-5 pl-14">
+                {/* Dot on the line */}
+                <div
+                  className="absolute left-[19px] top-5 h-3 w-3 -translate-x-1/2 rounded-full border-2"
+                  style={{ borderColor: "#c8a96e", backgroundColor: "#0f1119" }}
+                  aria-hidden
+                />
+
+                {/* Card */}
+                <div
+                  className="w-full rounded-2xl px-5 py-4"
+                  style={{ backgroundColor: "#1e2235" }}
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="mt-0.5 text-2xl leading-none" role="img" aria-label={title}>
+                      {icon}
+                    </span>
+                    <div>
+                      <h3
+                        className="text-sm font-semibold"
+                        style={{ color: "#c8a96e" }}
+                      >
+                        {title}
+                      </h3>
+                      <p
+                        className="mt-1 text-sm leading-relaxed"
+                        style={{ color: "#8a8698" }}
+                      >
+                        {desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <p className="mt-12 text-sm" style={{ color: "#8a8698" }}>
+          Have a feature idea?{" "}
+          <a
+            href="mailto:hello@nikah-ai.com"
+            className="font-medium underline underline-offset-2 transition-colors hover:text-[#c8a96e]"
+            style={{ color: "#c8a96e" }}
+          >
+            We&apos;d love to hear from you.
+          </a>
+        </p>
+      </section>
+
       <footer className="relative z-10 mt-24 pb-8 text-xs" style={{ color: "#3a3650" }}>
         © {new Date().getFullYear()} Nikah AI. All rights reserved.
       </footer>
