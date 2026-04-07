@@ -4,6 +4,29 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
+function Spinner() {
+  return (
+    <>
+      <style>{`
+        @keyframes nikah-spin {
+          to { transform: rotate(360deg); }
+        }
+        .nikah-spinner {
+          width: 16px;
+          height: 16px;
+          border: 2px solid rgba(15, 17, 25, 0.3);
+          border-top-color: #0f1119;
+          border-radius: 50%;
+          animation: nikah-spin 0.7s linear infinite;
+          display: inline-block;
+          flex-shrink: 0;
+        }
+      `}</style>
+      <span className="nikah-spinner" aria-hidden="true" />
+    </>
+  );
+}
+
 type Mode = "signin" | "signup";
 
 export default function AuthPage() {
@@ -188,11 +211,12 @@ export default function AuthPage() {
           <button
             type="submit"
             disabled={loading}
-            className="mt-2 w-full rounded-lg py-3 text-sm font-semibold tracking-wide transition-opacity disabled:opacity-60"
+            className="mt-2 w-full rounded-lg py-3 text-sm font-semibold tracking-wide transition-opacity disabled:opacity-60 flex items-center justify-center gap-2"
             style={{ backgroundColor: "#c8a96e", color: "#0f1119" }}
           >
+            {loading && <Spinner />}
             {loading
-              ? "Please wait…"
+              ? mode === "signin" ? "Signing in…" : "Creating account…"
               : mode === "signin"
               ? "Sign In"
               : "Create Account"}
